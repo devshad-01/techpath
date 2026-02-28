@@ -26,26 +26,26 @@ head_tags(PageTitle) -->
         link([rel(stylesheet), href('/static/css/custom.css')]),
         style([], ['
             [data-theme=\"techpath\"] {
-                --p: 88 51 83;
-                --pf: 70 40 66;
-                --pc: 255 255 255;
-                --s: 141 198 191;
-                --sf: 113 168 161;
-                --sc: 30 30 30;
-                --a: 252 188 102;
-                --af: 220 160 70;
-                --ac: 40 30 10;
-                --n: 55 45 50;
-                --nf: 40 32 37;
-                --nc: 245 240 242;
-                --b1: 255 252 249;
-                --b2: 247 243 240;
-                --b3: 237 232 228;
-                --bc: 55 45 50;
-                --in: 141 198 191;
-                --su: 141 198 191;
-                --wa: 252 188 102;
-                --er: 249 123 79;
+                --p: 39.5% 0.04 325;
+                --pf: 33% 0.04 325;
+                --pc: 100% 0 0;
+                --s: 76% 0.06 180;
+                --sf: 68% 0.06 180;
+                --sc: 20% 0.02 180;
+                --a: 82% 0.12 75;
+                --af: 75% 0.12 75;
+                --ac: 30% 0.04 75;
+                --n: 30% 0.02 325;
+                --nf: 25% 0.02 325;
+                --nc: 95% 0.005 325;
+                --b1: 98.5% 0.003 80;
+                --b2: 96.5% 0.005 80;
+                --b3: 94% 0.006 80;
+                --bc: 30% 0.02 325;
+                --in: 76% 0.06 180;
+                --su: 76% 0.06 180;
+                --wa: 82% 0.12 75;
+                --er: 65% 0.18 30;
                 --rounded-box: 0.75rem;
                 --rounded-btn: 0.5rem;
                 --rounded-badge: 1rem;
@@ -78,11 +78,13 @@ navbar(ActivePage) -->
 
 nav_link(Href, Label, Icon, ActivePage) -->
     {(Href = ActivePage ->
-        BtnClass = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium bg-primary text-white transition-all'
+        BtnClass = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-white transition-all',
+        ExtraStyle = 'background:#584053;'
     ;
-        BtnClass = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all'
+        BtnClass = 'inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all',
+        ExtraStyle = ''
     )},
-    html(a([class(BtnClass), href(Href)], [
+    html(a([class(BtnClass), style(ExtraStyle), href(Href)], [
         span([class('material-icons-outlined'), style('font-size:18px')], [Icon]),
         Label
     ])).
@@ -151,7 +153,7 @@ landing_body -->
                 ]),
                 h1([class('text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-6')], [
                     'Find Your ', br([]),
-                    span([class(''), style('color: #8DC6BF')], ['Perfect Tech Career'])
+                    span([style('color: rgba(255,255,255,0.85)')], ['Perfect Tech Career'])
                 ]),
                 p([class('text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed mb-10')],
                   ['Answer a few questions about your skills, interests, and personality. Our Prolog inference engine will match you with the ideal career path.']),
