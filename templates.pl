@@ -508,9 +508,9 @@ admin_body -->
 
             % Tabs (Material segmented buttons)
             div([class('md-tabs mb-8'), id('admin-tabs')], [
-                button([class('md-tab active'), onclick('showTab(\"careers\")')], ['Careers']),
-                button([class('md-tab'), onclick('showTab(\"attributes\")')], ['Attributes']),
-                button([class('md-tab'), onclick('showTab(\"mappings\")')], ['Mappings'])
+                button([class('md-tab active'), onclick('showTab("careers", this)')], ['Careers']),
+                button([class('md-tab'), onclick('showTab("attributes", this)')], ['Attributes']),
+                button([class('md-tab'), onclick('showTab("mappings", this)')], ['Mappings'])
             ]),
 
             % --- Careers Tab ---
@@ -552,10 +552,10 @@ admin_body -->
                         ])
                     ]),
                     div([class('flex gap-2 p-4 border-b border-gray-50')], [
-                        button([class('md-chip active'), onclick('filterAttrs(\"all\")')], ['All']),
-                        button([class('md-chip'), onclick('filterAttrs(\"skill\")')], ['Skills']),
-                        button([class('md-chip'), onclick('filterAttrs(\"interest\")')], ['Interests']),
-                        button([class('md-chip'), onclick('filterAttrs(\"personality\")')], ['Personality'])
+                        button([class('md-chip active'), onclick('filterAttrs("all", this)')], ['All']),
+                        button([class('md-chip'), onclick('filterAttrs("skill", this)')], ['Skills']),
+                        button([class('md-chip'), onclick('filterAttrs("interest", this)')], ['Interests']),
+                        button([class('md-chip'), onclick('filterAttrs("personality", this)')], ['Personality'])
                     ]),
                     div([class('overflow-x-auto')], [
                         table([class('table w-full'), id('attrs-table')], [

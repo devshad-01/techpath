@@ -2,3 +2,5 @@
 data/kb_snapshot.pl
 node_modules/
 .env
+
+PRD/

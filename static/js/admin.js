@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ── Tab switching (Material tabs) ──────────────────────────────────────────
-function showTab(name) {
+function showTab(name, btn) {
     document.querySelectorAll('.admin-tab').forEach(el => el.classList.add('hidden'));
     document.getElementById(`tab-${name}`).classList.remove('hidden');
     document.querySelectorAll('#admin-tabs .md-tab').forEach(el => el.classList.remove('active'));
-    event.target.classList.add('active');
+    if (btn) btn.classList.add('active');
 }
 
 // ── Modal helpers ──────────────────────────────────────────────────────────
@@ -90,9 +90,9 @@ async function deleteCareer(id) {
 // ── ATTRIBUTES ─────────────────────────────────────────────────────────────
 async function loadAttributes() {
     try {
-        const res = await fetch('/api/attributes');
+        const res = await fetch('/api/admin/attributes');
         const json = await res.json();
-        allAttrs = json.attributes || json;
+        allAttrs = json.attributes || [];
         renderAttrs(allAttrs);
     } catch (e) { console.error('Failed to load attributes:', e); }
 }
@@ -122,9 +122,9 @@ function renderAttrs(attrs) {
         </tr>`).join('');
 }
 
-function filterAttrs(type) {
+function filterAttrs(type, btn) {
     document.querySelectorAll('#tab-attributes .md-chip').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
+    if (btn) btn.classList.add('active');
     if (type === 'all') renderAttrs(allAttrs);
     else renderAttrs(allAttrs.filter(a => a.type === type));
 }
@@ -164,9 +164,9 @@ async function loadMappings() {
         const careersJson = await careersRes.json();
         const careers = careersJson.careers || careersJson;
 
-        const attrsRes = await fetch('/api/attributes');
+        const attrsRes = await fetch('/api/admin/attributes');
         const attrsJson = await attrsRes.json();
-        const attrs = attrsJson.attributes || attrsJson;
+        const attrs = attrsJson.attributes || [];
 
         const careerMap = {};
         careers.forEach(c => careerMap[c.id] = c.title);
